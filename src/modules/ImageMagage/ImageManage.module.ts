@@ -5,6 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import {ImageService} from "./service"
 
 const entities = [ image ] ;
+
 @Module({
 	imports: [
 		TypeOrmModule.forFeature( entities )

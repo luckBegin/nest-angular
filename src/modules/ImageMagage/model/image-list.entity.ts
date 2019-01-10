@@ -1,5 +1,6 @@
-import {Entity, Column, PrimaryGeneratedColumn, BaseEntity} from 'typeorm' ;
+import { Entity, Column, PrimaryGeneratedColumn, BaseEntity } from 'typeorm' ;
 import { ApiModelProperty } from '@nestjs/swagger' ;
+
 @Entity()
 export class image extends BaseEntity{
 
@@ -18,7 +19,6 @@ export class image extends BaseEntity{
 	@ApiModelProperty( { description : "创建时间" } )
 	@Column()
 	createTime : string ;
-
 	@ApiModelProperty( { description : "更新时间" } )
 	@Column()
 	modifyTime : string ;
