@@ -1,6 +1,6 @@
 import { Module , NestModule } from '@nestjs/common';
 import { ImageController } from './controller' ;
-import { image } from './model' ;
+import { image } from './entities' ;
 import { TypeOrmModule } from '@nestjs/typeorm';
 import {ImageService} from "./service"
 
@@ -14,6 +14,5 @@ const entities = [ image ] ;
 		ImageController
 	],
 	providers: [ ImageService ],
-
 })
 export class ImageManageModule{}

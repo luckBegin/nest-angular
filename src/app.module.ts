@@ -1,10 +1,16 @@
 import { Module , NestModule } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import {ImageManageModule} from "./modules/ImageMagage/ImageManage.module" ;
+import { ImageManageModule } from "./modules/ImageMagage/ImageManage.module" ;
+import { DepartModule } from './modules/depart/depart.module'
 import { TypeOrmModule } from '@nestjs/typeorm';
+
+const modules = [
+	ImageManageModule ,
+	DepartModule
+]
 @Module({
-    imports: [ ImageManageModule , TypeOrmModule.forRoot({
+    imports: [ ...modules , TypeOrmModule.forRoot({
 		"type": "mysql",
 		"host": "localhost",
 		"port": 3306,
