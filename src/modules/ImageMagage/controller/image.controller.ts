@@ -2,6 +2,7 @@ import { Get, Controller  , Res , HttpStatus} from '@nestjs/common';
 import { ImageService } from '../service' ;
 import { ApiResponse } from '@nestjs/swagger' ;
 import { image } from '../model' ;
+import { Response } from '../../../share/response/response.model' ;
 @Controller()
 export class ImageController{
 	constructor(
@@ -9,14 +10,10 @@ export class ImageController{
 	) {}
 
 	@Get("image")
-	@ApiResponse({ status: 200, description: "disable OK", type: image })
+	@ApiResponse({ status: 200, description: "disable OK", type : image })
 	async get(
 		@Res() res
 	){
-		return res.status( HttpStatus.OK ).send({
-			errorCode: 0,
-			errorMessage: '请求成功',
-			data: await  this.imgSer.list()
-		});
+		return res.status( HttpStatus.OK ).send(Response.succes( await  this.imgSer.get() ) );
 	};
 };

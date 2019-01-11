@@ -10,7 +10,7 @@ export class ImageService {
 		private readonly ImageListRepository : Repository<image>,
 	){};
 
-	async list(): Promise< image[] > {
+	async get(): Promise< image[] > {
 		return await this.ImageListRepository.find() ;
 	};
 };
