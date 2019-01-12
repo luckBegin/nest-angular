@@ -7,11 +7,16 @@ import { depart } from '../entities/depart.entity' ;
 export class DepartService {
 	constructor(
 		@InjectRepository(depart)
-		private readonly ImageListRepository : Repository<depart>,
+		private readonly DepartRepository : Repository<depart>,
 	){};
 
 	async get(): Promise< depart[] > {
-		return await this.ImageListRepository.find() ;
+		return await this.DepartRepository.find() ;
+	};
+
+	async post( data : any ) : Promise< any > {
+		const _data = this.DepartRepository.create(data) ;
+		return await this.DepartRepository.insert(_data) ;
 	};
 };
 

@@ -1,6 +1,8 @@
 import { Entity, Column } from 'typeorm' ;
 import { ApiModelProperty } from '@nestjs/swagger' ;
-import { BasicEntity } from '../../../share/entities'
+import { BasicEntity } from '../../../share/entities' ;
+import { IsNotEmpty } from 'class-validator' ;
+
 @Entity()
 export class depart extends BasicEntity{
 
@@ -10,5 +12,17 @@ export class depart extends BasicEntity{
 
 	@ApiModelProperty( { description : "备注" } )
 	@Column()
-	remark : string ;
+	description ?: string ;
+
+	@Column()
+	test : string ;
+};
+
+export class departDTO {
+	@IsNotEmpty()
+	name : string ;
+
+	description : string ;
+
+	test : string ;
 };

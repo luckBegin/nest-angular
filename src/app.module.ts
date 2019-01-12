@@ -16,7 +16,7 @@ const modules = [
 		"port": 3306,
 		"username": "root",
 		"password": "root",
-		"database": "image",
+		"database": "sys",
 		"entities": [
 			"src/**/**.entity{.ts,.js}"
 		],

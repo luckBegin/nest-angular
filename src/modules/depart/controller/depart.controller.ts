@@ -1,9 +1,8 @@
 import {Get, Controller, Res, HttpStatus, Post, Body} from '@nestjs/common';
 import { ApiResponse , ApiUseTags , ApiOperation } from '@nestjs/swagger' ;
-import { depart } from '../entities' ;
+import { depart , departDTO } from '../entities' ;
 import { Response } from '../../../share/response/response.model' ;
 import { DepartService } from '../service' ;
-
 @ApiUseTags("部门控制器")
 @Controller()
 export class DepartController{
@@ -11,7 +10,7 @@ export class DepartController{
 		private  readonly service : DepartService
 	) {};
 
-	@Get("depart")
+	@Get("department")
 	@ApiResponse({ status: 200, description: "成功", type : depart })
 	@ApiOperation({ title: '获取部门列表' })
 	async get(
@@ -22,15 +21,21 @@ export class DepartController{
 		);
 	};
 
-	@Post("depart")
+	@Post("department")
 	@ApiResponse( { status : 200 , description : "成功" , type : depart })
 	@ApiOperation( { title : "新增部门"})
 	async post(
 		@Res() res ,
-		@Body() depart : depart
+		@Body() data : departDTO
 	){
-		console.log(depart) ;
-		return res.status( HttpStatus.OK )
-			.send("200")
+		try {
+			const result = await this.service.post( data ) ;
+			return res.status( HttpStatus.OK )
+				.send( Response.succes("") );
+		}catch (e) {
+			return res.status( HttpStatus.OK )
+				.send( Response.error("") );
+		};
+
 	};
 };
