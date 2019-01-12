@@ -39,14 +39,11 @@ class Sql{
 	};
 
 	get():string{
-
 		return this._sql ;
 	}
 };
 
 
 export class Mysql {
-	static SqlBuilder() : Sql{
-		return new Sql ;
-	}
+	static SqlBuilder : Sql = new Sql ;
 };

@@ -28,26 +28,23 @@ export class DepartService{
 	};
 
 	private async recursive ( item ?: any[], data ?: any[] ) : Promise< any >{
-		const _this = this ;
 		return new Promise( (resolve , reject ) => {
-			this.DepartRepository.query("select * from depart where parentId  is null ")
-				.then( data => {
-					// resolve(data) ;
+			const sql = Mysql.SqlBuilder.select()
+				.from("depart")
+				.where("parentId is")
+				.get();
 
+			this.DepartRepository.query(sql , [ null ])
+				.then( data => {
+					resolve(data) ;
 				}).catch( e => {
 					reject(e) ;
-			})
+			});
 		});
 	};
 
 	async get(): Promise< departDTO[] > {
 		const data = this.recursive() ;
-
-		const sql = Mysql.SqlBuilder()
-			.select()
-			.from("depart")
-			.where("departId is");
-
 		return data ;
 	};
 
