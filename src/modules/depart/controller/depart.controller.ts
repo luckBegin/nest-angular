@@ -17,7 +17,7 @@ export class DepartController{
 		@Res() res
 	){
 		return res.status( HttpStatus.OK ).send(
-			Response.succes( await this.service.get() )
+			Response.succes( { data : await this.service.get() } )
 		);
 	};
 
@@ -28,14 +28,8 @@ export class DepartController{
 		@Res() res ,
 		@Body() data : departDTO
 	){
-		try {
-			const result = await this.service.post( data ) ;
-			return res.status( HttpStatus.OK )
-				.send( Response.succes("") );
-		}catch (e) {
-			return res.status( HttpStatus.OK )
-				.send( Response.error("") );
-		};
-
+		const result = await this.service.post( data ) ;
+		return res.status( HttpStatus.OK )
+			.send( result );
 	};
 };

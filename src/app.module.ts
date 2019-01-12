@@ -20,7 +20,7 @@ const modules = [
 		"entities": [
 			"src/**/**.entity{.ts,.js}"
 		],
-		"synchronize": true
+		"synchronize": false // 自动同步entities
 	})],
     controllers: [AppController],
     providers: [ AppService ],
