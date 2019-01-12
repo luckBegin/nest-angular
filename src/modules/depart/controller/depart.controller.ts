@@ -11,13 +11,13 @@ export class DepartController{
 	) {};
 
 	@Get("department")
-	@ApiResponse({ status: 200, description: "成功", type : depart })
+	@ApiResponse({ status: 200, description: "成功", type : departDTO })
 	@ApiOperation({ title: '获取部门列表' })
 	async get(
 		@Res() res
 	){
 		return res.status( HttpStatus.OK ).send(
-			Response.succes( { data : await this.service.get() } )
+			Response.success( { data :  await this.service.get() } )
 		);
 	};
 

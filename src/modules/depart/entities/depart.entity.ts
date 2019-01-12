@@ -18,11 +18,17 @@ export class depart extends BasicEntity{
 	parentId ?: number ;
 };
 
-export class departDTO {
+export class departDTO extends BasicEntity{
+	@ApiModelProperty( { description : "名字" } )
 	@IsNotEmpty()
 	name : string ;
 
+	@ApiModelProperty( { description : "备注" } )
 	description : string ;
 
+	@ApiModelProperty( { description : "父级ID" } )
 	parentId : number ;
+
+	@ApiModelProperty( { description : "子部门" } )
+	children : departDTO[] ;
 };

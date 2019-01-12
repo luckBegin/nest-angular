@@ -44,10 +44,12 @@ export class Response {
 		if(data && data.page)
 			model.build("page" , data.page ) ;
 
+		if(data && data.data)
+			model.build("data" , data.data) ;
 		return model ;
 	};
 
-	static succes : Function = function( data : ResponseModel ) : ResponseModel {
+	static success : Function = function( data : ResponseModel ) : ResponseModel {
 		const response = Response.buildRes(data)
 			.build("success" , true )
 			.build("code" , 200 ) ;
