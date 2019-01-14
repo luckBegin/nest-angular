@@ -15,7 +15,7 @@ export class ImageController{
 	async get(
 		@Res() res
 	){
-		return res.status( HttpStatus.OK ).send( Response.succes( await  this.imgSer.get() ) );
+		return res.status( HttpStatus.OK ).send( Response.success( await  this.imgSer.get() ) );
 	};
 
 

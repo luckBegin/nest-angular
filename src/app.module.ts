@@ -1,14 +1,21 @@
-import { Module , NestModule } from '@nestjs/common';
+import { Module} from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ImageManageModule } from "./modules/ImageMagage/ImageManage.module" ;
+
+// basic module
 import { DepartModule } from './modules/depart/depart.module'
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { MenuModule } from './modules/menu/menu.module' ;
+import { RoleModule } from './modules/role/role.module' ;
 
 const modules = [
 	ImageManageModule ,
-	DepartModule
-]
+	DepartModule ,
+	MenuModule ,
+	RoleModule
+];
+
 @Module({
     imports: [ ...modules , TypeOrmModule.forRoot({
 		"type": "mysql",
