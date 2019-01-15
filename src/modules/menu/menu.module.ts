@@ -4,7 +4,9 @@ import { menu  ,menu_locale } from './entities' ;
 import { MenuController } from './controller' ;
 
 import { MenuService } from './service/menu.service' ;
-const entities = [ menu , menu_locale ] ;
+import {role} from "../role/entities"
+import {staff} from "../staff/entities"
+const entities = [ menu , menu_locale  , role , staff ] ;
 @Module({
 	imports: [
 		TypeOrmModule.forFeature( entities )

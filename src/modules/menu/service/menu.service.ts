@@ -5,6 +5,8 @@ import { menu , MenuDTO  , menu_locale } from '../entities' ;
 import { Response  , ResponseModel } from '../../../share/response/response.model';
 import { Mysql } from "../../../share/mysql/sql.builder"
 import {departDTO} from "../../depart/entities"
+import {role} from "../../role/entities"
+import {staff} from "../../staff/entities"
 
 @Injectable()
 export class MenuService{
@@ -14,6 +16,12 @@ export class MenuService{
 
 		@InjectRepository(menu_locale)
 		private readonly MenuLocaleRepository : Repository<menu_locale>,
+
+		@InjectRepository(role)
+		private readonly RoleRepository : Repository<role>,
+
+		@InjectRepository(staff)
+		private readonly StaffRepository : Repository<staff>,
 	){};
 
 	private async recursive ( item ?: any[] ) : Promise< any >{
@@ -108,6 +116,16 @@ export class MenuService{
 			await this.MenuLocaleRepository.save(Locale) ;
 			await this.MenuRepository.save(Menu) ;
 			return Response.success() ;
+		}catch (e) {
+			return Response.error( { message : e }) ;
+		}
+	};
+
+	async getByUsrId(id : number) : Promise<any>{
+		try {
+			const staff = await this.StaffRepository.findOne(id);
+
+			return Response.success( { data : staff }) ;
 		}catch (e) {
 			return Response.error( { message : e }) ;
 		}

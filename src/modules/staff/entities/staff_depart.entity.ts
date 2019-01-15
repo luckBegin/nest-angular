@@ -1,10 +1,10 @@
 import { Entity, Column } from 'typeorm' ;
 import { BasicEntity } from '../../../share/entities' ;
 @Entity()
-export class role_menu extends BasicEntity{
+export class staff_depart extends BasicEntity{
 	@Column()
-	menuId : number ;
+	staffId : number ;
 
 	@Column()
-	roleId : number ;
+	departId : number;
 };

@@ -1,5 +1,5 @@
 export  class ResponseModel{
-	code : number = null ;
+	code : number = 200 ;
 	message : string = null ;
 	success : boolean = null ;
 	data : any  = null ;
@@ -52,14 +52,12 @@ export class Response {
 	static success : Function = function( data : ResponseModel ) : ResponseModel {
 		const response = Response.buildRes(data)
 			.build("success" , true )
-			.build("code" , 200 ) ;
 		return response ;
 	};
 
 	static error : Function = function ( data : ResponseModel )  : ResponseModel {
 		const response = Response.buildRes(data)
 			.build("success" , false )
-			.build("code" , 400 );
 		return response;
 	};
 

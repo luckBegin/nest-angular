@@ -14,7 +14,7 @@ export class RoleService{
 		private readonly RoleMenuRepository : Repository< role_menu >
 	){};
 
-	async get(page : number = 1 , size : number = 10 ){
+	async get(page : number = 1 , size : number = 10 ) : Promise<any> {
 		try {
 			const [ result , total ] = await this.RoleRepository.findAndCount({
 				take : size ,
@@ -27,7 +27,7 @@ export class RoleService{
 		}
 	};
 
-	async getById( id : number ){
+	async getById( id : number ) : Promise<any> {
 		try {
 
 			const data = {
@@ -46,7 +46,7 @@ export class RoleService{
 	};
 
 
-	async post( data : any ){
+	async post( data : any ) : Promise<any> {
 		try {
 			const Role = this.RoleRepository.create(data) ;
 
@@ -70,7 +70,7 @@ export class RoleService{
 		}
 	};
 
-	async put( data : any ){
+	async put( data : any ) : Promise<any> {
 		try {
 			const Role = this.RoleRepository.create(data) ;
 
@@ -96,7 +96,7 @@ export class RoleService{
 		}
 	};
 
-	async delete( id : number ){
+	async delete( id : number ) : Promise<any> {
 		try {
 			await this.RoleRepository.delete(id) ;
 			await this.RoleMenuRepository.delete( { roleId : id }) ;

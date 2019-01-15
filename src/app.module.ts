@@ -8,12 +8,14 @@ import { DepartModule } from './modules/depart/depart.module'
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { MenuModule } from './modules/menu/menu.module' ;
 import { RoleModule } from './modules/role/role.module' ;
+import { StaffModule } from './modules/staff/staff.module' ;
 
 const modules = [
 	ImageManageModule ,
 	DepartModule ,
 	MenuModule ,
-	RoleModule
+	RoleModule ,
+	StaffModule
 ];
 
 @Module({

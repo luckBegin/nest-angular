@@ -59,4 +59,15 @@ export class MenuController{
 			await this.service.put( data)
 		);
 	};
+
+	@Get("menu/tree/:id")
+	@ApiResponse( { status : 200 , description : "成功"  , type : MenuDTO })
+	@ApiOperation( { title : "根据ID查询菜单" })
+	async getById(
+		@Res() res ,
+		@Param("id") id : number
+	){
+		return res.status(HttpStatus.OK)
+			.send( await this.service.getByUsrId(id) )
+	}
 }
