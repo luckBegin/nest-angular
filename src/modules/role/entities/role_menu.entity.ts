@@ -7,4 +7,4 @@ export class role_menu extends BasicEntity{
 
 	@Column()
 	roleId : number ;
-};
+}

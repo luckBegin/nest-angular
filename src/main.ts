@@ -24,6 +24,7 @@ async function bootstrap() {
 		// DTO验证不过是否返回错误信息
 		disableErrorMessages: false,
     }));
+
     await app.listen(3000);
 }
-bootstrap();
+bootstrap()

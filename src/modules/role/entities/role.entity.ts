@@ -14,8 +14,7 @@ export class role extends BasicEntity{
 
 	@ApiModelProperty( { description : "子菜单"})
 	enabled : number ;
-
-};
+}
 
 export class RoleDTO extends BasicEntity{
 	@ApiModelProperty( { description : "地址" } )
@@ -30,4 +29,4 @@ export class RoleDTO extends BasicEntity{
 
 	@ApiModelProperty( { description : "菜单" })
 	menuDTOS : any[] ;
-};
+}

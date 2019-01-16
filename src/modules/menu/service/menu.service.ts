@@ -3,25 +3,25 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { menu , MenuDTO  , menu_locale } from '../entities' ;
 import { Response  , ResponseModel } from '../../../share/response/response.model';
-import { Mysql } from "../../../share/mysql/sql.builder"
-import {departDTO} from "../../depart/entities"
-import {role} from "../../role/entities"
-import {staff} from "../../staff/entities"
+import { Mysql } from "../../../share/mysql/sql.builder" ;
+import {departDTO} from "../../depart/entities" ;
+import {role} from "../../role/entities" ;
+import {staff} from "../../staff/entities" ;
 
 @Injectable()
 export class MenuService{
 	constructor(
 		@InjectRepository(menu)
-		private readonly MenuRepository : Repository<menu>,
+		private readonly MenuRepository : Repository< menu >,
 
 		@InjectRepository(menu_locale)
-		private readonly MenuLocaleRepository : Repository<menu_locale>,
+		private readonly MenuLocaleRepository : Repository< menu_locale >,
 
 		@InjectRepository(role)
-		private readonly RoleRepository : Repository<role>,
+		private readonly RoleRepository : Repository< role >,
 
 		@InjectRepository(staff)
-		private readonly StaffRepository : Repository<staff>,
+		private readonly StaffRepository : Repository< staff >,
 	){};
 
 	private async recursive ( item ?: any[] ) : Promise< any >{
@@ -56,6 +56,7 @@ export class MenuService{
 				.catch( e => reject(e)) ;
 		});
 	};
+
 	async getTree() : Promise<any>{
 		return new Promise((resolve, reject) => {
 			const sql = Mysql.SqlBuilder.select()
@@ -85,7 +86,7 @@ export class MenuService{
 			return Response.success() ;
 		}catch (e) {
 			return Response.error( { message : e }) ;
-		};
+		}
 	};
 
 	async post( data : any) : Promise<any>{
@@ -124,7 +125,6 @@ export class MenuService{
 	async getByUsrId(id : number) : Promise<any>{
 		try {
 			const staff = await this.StaffRepository.findOne(id);
-
 			return Response.success( { data : staff }) ;
 		}catch (e) {
 			return Response.error( { message : e }) ;
