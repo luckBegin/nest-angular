@@ -15,4 +15,4 @@ export class image extends BasicEntity{
 	@ApiModelProperty( { description : "项目ID" } )
 	@Column()
 	projectId : number ;
-};
+}

@@ -176,9 +176,13 @@ export class StaffService{
 
 	async login(data : any ) : Promise< any > {
 		try {
+
 			const usrname = data.username ;
-			const pass = data.password ;
-			const result = await this.StaffRepository.findOne({ username : usrname , password : md5(pass) }) ;
+
+			const pass = md5(data.password) ;
+
+			const result = await this.StaffRepository.findOne({ username : usrname , password : pass }) ;
+
 			if(result){
 				return Response.success( { data : result }) ;
 			}else{

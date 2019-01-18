@@ -1,9 +1,7 @@
 import {Get, Controller, Res, HttpStatus, Post, Body, Delete, Param, Put, Query} from '@nestjs/common';
 import { ApiResponse , ApiUseTags , ApiOperation } from '@nestjs/swagger' ;
 import { StaffDTO } from '../entities' ;
-import { Response } from '../../../share/response/response.model' ;
 import { StaffService } from '../service' ;
-import {departDTO} from "../../depart/entities"
 
 @ApiUseTags("员工控制器")
 @Controller()
