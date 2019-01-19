@@ -69,5 +69,5 @@ export class MenuController{
 	){
 		return res.status(HttpStatus.OK)
 			.send( await this.service.getByUsrId(id) )
-	}
+	};
 }

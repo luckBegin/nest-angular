@@ -59,7 +59,7 @@ export class StaffController{
 			await this.service.put( data )
 		);
 	};
-
+	
 	@Post("employee/login")
 	@ApiResponse( { status : 200 , description : "成功" })
 	@ApiOperation( { title : "登录"})
