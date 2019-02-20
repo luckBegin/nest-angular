@@ -57,7 +57,7 @@ export class MenuController{
 	){
 		return res.status( HttpStatus.OK ).send(
 			await this.service.put( data)
-		);
+		)
 	};
 
 	@Get("menu/tree/:id")
